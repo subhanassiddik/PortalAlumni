@@ -8,22 +8,11 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles authenticating users for the application and
-    | redirecting them to your home screen. The controller uses a trait
-    | to conveniently provide its functionality to your applications.
-    |
-    */
-
-      /**
-     * Show the application's login form.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+        $this->middleware('guest:company')->except('logout');
+    }
+    
     public function showLoginForm()
     {
         return view('Company.login');
@@ -51,22 +40,6 @@ class LoginController extends Controller
       return redirect()->back()->withInput($request->only('email', 'remember'));
     }
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('guest:company')->except('logout');
-    }
-
-        /**
-     * Log the user out of the application.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function logout()
     {
         Auth::guard('company')->logout();

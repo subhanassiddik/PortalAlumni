@@ -30,7 +30,7 @@ class RedirectIfAuthenticated
              
             default:
               if (Auth::guard($guard)->check()) {
-                  return redirect('vacancy.home');
+                  return redirect()->route('vacancy.home');
               }
               break;
           }

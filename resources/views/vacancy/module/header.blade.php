@@ -48,13 +48,11 @@
                 <!-- User Menu -->
                 <div class="user-menu">
                     <div class="user-name"><span><img src={{asset("assets/images/dashboard-avatar.jpg")}} alt=""></span>
-                    @if (Auth::guard('admin')->check() == 'admin')
-                        {{ Auth::guard('admin')->user()->name  }}
-                    @elseif(Auth::guard('company')->check())
-                        {{ Auth::guard('company')->user()->name  }}
-                    @else
-                        {{ Auth::user()->name }}
+
+                    @if(Auth::guard('admin')->check())
+                        admin
                     @endif
+
                     </div>
                     <ul>
                         <li><a href="dashboard.html"><i class="sl sl-icon-settings"></i> Dashboard</a></li>
@@ -70,7 +68,9 @@
                         </form>
                     </ul>
                 </div>
-
+                @if(Auth::guard('admin')->check())
+                <a href="{{route('admin.home')}}" class="button border with-icon">Dashboard <i class="sl sl-icon-plus"></i></a>
+                @endif
             </div>
             <!-- Header Widget / End -->
         </div>

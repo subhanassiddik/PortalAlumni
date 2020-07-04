@@ -19,24 +19,6 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/user/logout', 'Auth\LoginController@logoutUser')->name('user.logout');
 
-Route::group(['prefix' => 'admin','as'=>'admin.'], function () {
-    Route::get('/', 'AdminController@index')->name('home');    
-    Route::group(['namespace' => 'AuthAdmin'], function () {
-        Route::post('/login', 'LoginController@login')->name('login.submit');    
-        Route::get('/login', 'LoginController@showLoginForm')->name('login');
-        route::get('/logout','LoginController@logout')->name('logout');    
-    });
-});
-
-Route::group(['prefix' => 'company','as'=>'company.'], function () {
-    Route::get('/', 'CompanyController@index')->name('home');    
-    Route::group(['namespace' => 'AuthCompany'], function () {
-        Route::post('/login', 'LoginController@login')->name('login.submit');    
-        Route::get('/login', 'LoginController@showLoginForm')->name('login');
-        route::get('/logout','LoginController@logout')->name('logout');    
-    });
-});
-
 Route::group(['namespace' => 'Vacancy'], function () {
     
     Route::get('/','VacancyController@index')->name('vacancy.home');
@@ -56,4 +38,26 @@ Route::group(['namespace' => 'Vacancy'], function () {
     });
 
 });
+
+Route::group(['prefix' => 'admin','as'=>'admin.'], function () {
+    
+    Route::get('/', 'AdminController@index')->name('home');    
+    
+    Route::group(['namespace' => 'AuthAdmin'], function () {
+        Route::post('/login', 'LoginController@login')->name('login.submit');    
+        Route::get('/login', 'LoginController@showLoginForm')->name('login');
+        route::get('/logout','LoginController@logout')->name('logout');    
+    });
+});
+
+Route::group(['prefix' => 'company','as'=>'company.'], function () {
+    // Route::get('/', 'CompanyController@index')->name('home');    
+    Route::group(['namespace' => 'AuthCompany'], function () {
+        Route::post('/login', 'LoginController@login')->name('login.submit');    
+        Route::get('/login', 'LoginController@showLoginForm')->name('login');
+        route::get('/logout','LoginController@logout')->name('logout');    
+    });
+});
+
+
 
