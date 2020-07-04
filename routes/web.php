@@ -37,7 +37,8 @@ Route::group(['prefix' => 'company','as'=>'company.'], function () {
     });
 });
 
-
+Route::group(['namespace' => 'Vacancy'], function () {
+    
 Route::get('/','VacancyController@index');
 Route::get('vacancies','VacancyController@create');
 Route::post('vacancies','VacancyController@store');
@@ -49,5 +50,5 @@ Route::get('vacancies/filter/{tag}','VacancyController@filter');
 
 Route::post('vacancies/upload', 'VacancyController@upload')->name('vacancy.upload');
 
-
+});
 

@@ -62,7 +62,12 @@
                                 Post Vacancy</a></li>
                         <li><a href="dashboard-bookings.html"><i class="fa fa-calendar-check-o"></i>
                                 My Profil</a></li>
-                        <li><a href="index.html"><i class="sl sl-icon-power"></i> Logout</a></li>
+                        
+                        <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();"><i class="sl sl-icon-power"></i> Logout</a></li>
+                        
+                        <form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
                     </ul>
                 </div>
 

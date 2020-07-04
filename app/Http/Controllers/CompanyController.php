@@ -23,6 +23,6 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        return view('company');
+        return view('company.home');
     }
 }
