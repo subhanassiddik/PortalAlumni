@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
@@ -39,16 +39,21 @@ Route::group(['prefix' => 'company','as'=>'company.'], function () {
 
 Route::group(['namespace' => 'Vacancy'], function () {
     
-Route::get('/','VacancyController@index');
-Route::get('vacancies','VacancyController@create');
-Route::post('vacancies','VacancyController@store');
-Route::get('vacancies/{slug}','VacancyController@show');
-Route::get('vacancies/{slug}/edit','VacancyController@edit');
-Route::patch('vacancies/{slug}','VacancyController@update');
-Route::delete('vacancies/{id}', 'VacancyController@destroy');
-Route::get('vacancies/filter/{tag}','VacancyController@filter');
+    Route::get('/','VacancyController@index')->name('vacancy.home');
 
-Route::post('vacancies/upload', 'VacancyController@upload')->name('vacancy.upload');
+    Route::group(['prefix' => 'vacancies'], function () {
+        
+        Route::get('/','VacancyController@create');
+        Route::post('/','VacancyController@store');
+        Route::get('/{slug}','VacancyController@show');
+        Route::get('/{slug}/edit','VacancyController@edit');
+        Route::patch('/{slug}','VacancyController@update');
+        Route::delete('/{id}', 'VacancyController@destroy');
+        Route::get('/filter/{tag}','VacancyController@filter');
+
+    Route::post('/upload', 'VacancyController@upload')->name('vacancy.upload');
+    
+    });
 
 });
 

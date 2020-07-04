@@ -10,7 +10,7 @@ use App\Tag;
 
 class VacancyController extends Controller
 {
-    
+
     public function index(Request $request)
     {   
         $tags = Tag::all();

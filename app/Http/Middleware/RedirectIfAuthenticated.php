@@ -25,12 +25,12 @@ class RedirectIfAuthenticated
 
             case 'company':
               if (Auth::guard($guard)->check()) {
-                return redirect()->route('company.home');
+                return redirect()->route('vacancy.home');
               }
              
             default:
               if (Auth::guard($guard)->check()) {
-                  return redirect('home');
+                  return redirect('vacancy.home');
               }
               break;
           }

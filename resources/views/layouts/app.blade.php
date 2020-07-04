@@ -43,7 +43,9 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @guest
-                            <li><a href="{{ route('login') }}">Login</a></li>
+                            <li><a href="{{ route('admin.login') }}">Admin Login</a></li>
+                            <li><a href="{{ route('company.login') }}">Company Login</a></li>
+                            <li><a href="{{ route('login') }}">Student Login</a></li>
                             <li><a href="{{ route('register') }}">Register</a></li>
                         @else
                             <li class="dropdown">
